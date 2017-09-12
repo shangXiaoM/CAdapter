@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 
@@ -91,18 +90,6 @@ public class HomeView implements IBaseView, IHomeView {
         this.mRootView = view;
         this.mContext = view.getContext();
         mListItemMainAdapter = new MainAdapter<>(LayoutInflater.from(this.mContext), mListData, this.mContext, R.layout.list_item_main);
-
-        mListView = (ListView) view.findViewById(R.id.listview_home);
-        mToolbar = (Toolbar) view.findViewById(R.id.toolbar_home_include);
-        mToolbar.setTitle("测试home");
-        mToolbar.inflateMenu(R.menu.menu_main);
-        mToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-
-                return false;
-            }
-        });
     }
 
     @Override

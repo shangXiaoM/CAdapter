@@ -1,5 +1,6 @@
 package com.shangxiaom.commonlist.activity;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 import com.shangxiaom.commonlist.R;
 import com.shangxiaom.commonlist.adapter.MainAdapter;
 import com.shangxiaom.commonlist.bean.MainListItem;
+import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.zhihu.matisse.Matisse;
 import com.zhihu.matisse.MimeType;
 import com.zhihu.matisse.engine.impl.PicassoEngine;
@@ -21,12 +23,15 @@ import com.zhihu.matisse.engine.impl.PicassoEngine;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.reactivex.functions.Consumer;
+
 public class MainActivity extends BaseActivity {
 
     private static final int IMAGE_TO_UPLOAD = 1;
 
     private MainAdapter<MainListItem> mListItemMainAdapter;
     private List<MainListItem> mListData = new ArrayList<>();
+    private RxPermissions mRxPermissions;
 
     private ListView mListView;
     private List<Uri> mSelectedImages;
@@ -47,7 +52,7 @@ public class MainActivity extends BaseActivity {
     @Override
     void bindView() {
         mListView = fvb(R.id.listview_main);
-        mToolbar = fvb(R.id.toolbar_home_include);
+        mToolbar = fvb(R.id.toolbar_main_include);
     }
 
     @Override
@@ -55,6 +60,7 @@ public class MainActivity extends BaseActivity {
         super.initData();
         mListItemMainAdapter = new MainAdapter<>(this.getLayoutInflater(), mListData, this, R.layout.list_item_main);
         mListView.setAdapter(mListItemMainAdapter);
+        mRxPermissions = new RxPermissions(this);
         mToolbar.setTitle("测试Title");
     }
 
@@ -76,12 +82,23 @@ public class MainActivity extends BaseActivity {
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.upload_menu_main:
-                        chooseImages();
+                        mRxPermissions.request(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
+                                .subscribe(new Consumer<Boolean>() {
+                                    @Override
+                                    public void accept(Boolean aBoolean) throws Exception {
+                                        if (aBoolean) {
+                                            chooseImages();
+                                        } else {
+                                            Toast.makeText(MainActivity.this, MainActivity.this.getString(R.string.permission_denied), Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+
                         break;
                     default:
                         break;
                 }
-                return false;
+                return true;
             }
         });
     }
