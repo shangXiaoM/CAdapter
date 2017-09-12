@@ -18,6 +18,7 @@ import com.shangxiaom.commonlist.bean.MainListItem;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.zhihu.matisse.Matisse;
 import com.zhihu.matisse.MimeType;
+import com.zhihu.matisse.engine.impl.GlideEngine;
 import com.zhihu.matisse.engine.impl.PicassoEngine;
 
 import java.util.ArrayList;
@@ -109,7 +110,7 @@ public class MainActivity extends BaseActivity {
                 .theme(R.style.Matisse_Zhihu)
                 .countable(false)
                 .maxSelectable(10)
-                .imageEngine(new PicassoEngine())
+                .imageEngine(new GlideEngine())
                 .forResult(IMAGE_TO_UPLOAD);
     }
 
