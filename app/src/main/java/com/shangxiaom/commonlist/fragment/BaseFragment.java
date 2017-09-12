@@ -35,6 +35,7 @@ public class BaseFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
         Bundle bundle = getArguments();
         if (null != bundle) {
             int layoutId = bundle.getInt(IBaseView.LAYOUT_ID);
@@ -45,5 +46,13 @@ public class BaseFragment extends Fragment {
             return view;
         }
         return super.onCreateView(inflater, container, savedInstanceState);
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        if (null != mIBaseView) {
+            mIBaseView.onHiddenChanged(hidden);
+        }
+        super.onHiddenChanged(hidden);
     }
 }

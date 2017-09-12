@@ -47,7 +47,7 @@ public class MainActivity extends BaseActivity {
     @Override
     void bindView() {
         mListView = fvb(R.id.listview_main);
-        mToolbar = fvb(R.id.toolbar_main_include);
+        mToolbar = fvb(R.id.toolbar_home_include);
     }
 
     @Override
