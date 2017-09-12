@@ -1,4 +1,4 @@
-package com.shangxiaom.commonlist;
+package com.shangxiaom.commonlist.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.shangxiaom.commonlist.R;
 import com.shangxiaom.commonlist.adapter.MainAdapter;
 import com.shangxiaom.commonlist.bean.MainListItem;
 import com.zhihu.matisse.Matisse;

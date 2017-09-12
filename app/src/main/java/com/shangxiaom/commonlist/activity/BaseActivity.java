@@ -1,4 +1,4 @@
-package com.shangxiaom.commonlist;
+package com.shangxiaom.commonlist.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

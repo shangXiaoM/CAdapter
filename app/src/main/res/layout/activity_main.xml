@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.shangxiaom.commonlist.MainActivity">
+    tools:context="com.shangxiaom.commonlist.activity.MainActivity">
 
     <include android:id="@+id/toolbar_main_include"
              layout="@layout/custom_toolbar"
