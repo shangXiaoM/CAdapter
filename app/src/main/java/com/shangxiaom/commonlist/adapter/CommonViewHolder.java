@@ -1,4 +1,4 @@
-package com.shangxiaom.adapter;
+package com.shangxiaom.commonlist.adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -6,7 +6,6 @@ import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -69,20 +68,6 @@ public class CommonViewHolder {
     }
 
     /**
-     * 为TextView设置字符串
-     *
-     * @param viewId
-     * @param text
-     * @return
-     */
-    public CommonViewHolder setCheckBoxText(int viewId, String text, boolean checked) {
-        CheckBox view = getView(viewId);
-        view.setText(text);
-        view.setChecked(checked);
-        return this;
-    }
-
-    /**
      * 为ImageView设置图片
      *
      * @param viewId
@@ -97,6 +82,20 @@ public class CommonViewHolder {
 
     /**
      * 为ImageView设置图片
+     *
+     * @param viewId
+     * @param drawableId
+     * @return
+     */
+    public CommonViewHolder setBackgroundRes(int viewId, int drawableId) {
+        ImageView view = getView(viewId);
+        view.setBackgroundResource(drawableId);
+        return this;
+    }
+
+    /**
+     * 为ImageView设置图片
+     *
      * @param viewId
      * @param bm
      * @return

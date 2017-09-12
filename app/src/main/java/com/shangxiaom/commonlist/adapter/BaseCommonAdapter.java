@@ -1,4 +1,4 @@
-package com.shangxiaom.adapter;
+package com.shangxiaom.commonlist.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -46,7 +46,7 @@ public abstract class BaseCommonAdapter<T> extends BaseAdapter {
     /**
      * Get the data item associated with the specified position in the data set.
      *
-     * @param position Position of the item whose data we want within the adapter's
+     * @param position Position of the item whose data we want within the commonlist.adapter's
      *                 data set.
      * @return The data at the specified position.
      */
@@ -61,7 +61,7 @@ public abstract class BaseCommonAdapter<T> extends BaseAdapter {
     /**
      * Get the row id associated with the specified position in the list.
      *
-     * @param position The position of the item within the adapter's data set whose row id we want.
+     * @param position The position of the item within the commonlist.adapter's data set whose row id we want.
      * @return The id of the item at the specified position.
      */
     @Override
@@ -72,7 +72,9 @@ public abstract class BaseCommonAdapter<T> extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         final CommonViewHolder holder = getHolder(position, convertView, parent);
-        convert(holder, mDatas.get(position));
+        if (0 < mDatas.size()) {
+            convert(holder, mDatas.get(position));
+        }
         return holder.getConvertView();
     }
 

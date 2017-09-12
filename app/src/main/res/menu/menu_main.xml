@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/upload_menu_main"
+        android:icon="@mipmap/ic_apple_keyboard_caps_white_24dp"
+        android:title="@string/upload_menu_title"
+        app:showAsAction="always"
+        />
+</menu>
