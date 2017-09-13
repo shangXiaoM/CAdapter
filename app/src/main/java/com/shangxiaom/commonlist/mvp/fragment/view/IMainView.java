@@ -1,4 +1,4 @@
-package com.shangxiaom.commonlist.fragment.mvp.view;
+package com.shangxiaom.commonlist.mvp.fragment.view;
 
 /**
  * **************************************************
@@ -9,16 +9,18 @@ package com.shangxiaom.commonlist.fragment.mvp.view;
  * @ Copyright (c) 2017, RencareHealth All Rights Reserved.
  * **************************************************
  */
-public interface IHomeView {
+public interface IMainView {
 
     /**
      * 是否显示进度
+     *
      * @param visible
      */
     void onProgressShow(boolean visible);
 
     /**
      * toast信息
+     *
      * @param resId
      */
     void toast(int resId);

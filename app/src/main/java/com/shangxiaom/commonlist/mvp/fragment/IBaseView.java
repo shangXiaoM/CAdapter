@@ -1,4 +1,4 @@
-package com.shangxiaom.commonlist.fragment;
+package com.shangxiaom.commonlist.mvp.fragment;
 
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +19,7 @@ public interface IBaseView {
 
     /**
      * 绑定控件
+     *
      * @param view
      */
     void bindView(View view);

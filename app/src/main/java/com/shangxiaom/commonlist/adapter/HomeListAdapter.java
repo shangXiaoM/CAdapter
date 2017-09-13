@@ -3,8 +3,8 @@ package com.shangxiaom.commonlist.adapter;
 import android.content.Context;
 import android.view.LayoutInflater;
 
-import com.shangxiaom.commonlist.bean.MainListItem;
 import com.shangxiaom.commonlist.R;
+import com.shangxiaom.commonlist.bean.HomeListItem;
 
 import java.util.List;
 
@@ -17,17 +17,17 @@ import java.util.List;
  * @ Copyright (c) 2017, RencareHealth All Rights Reserved.
  * **************************************************
  */
-public class MainAdapter<T> extends BaseCommonAdapter<T> {
+public class HomeListAdapter<T> extends BaseCommonAdapter<T> {
 
-    public MainAdapter(LayoutInflater layoutInflater, List<T> datas, Context context, int itemLayoutId) {
+    public HomeListAdapter(LayoutInflater layoutInflater, List<T> datas, Context context, int itemLayoutId) {
         super(layoutInflater, datas, context, itemLayoutId);
     }
 
     @Override
     public void convert(CommonViewHolder holder, T item) {
-        MainListItem listItem = (MainListItem) item;
+        HomeListItem listItem = (HomeListItem) item;
         holder.setText(R.id.list_item_title, listItem.getTitle());
         holder.setText(R.id.list_item_content, listItem.getContent());
-        holder.setBackgroundRes(R.id.list_item_image, listItem.getImageId());
+        holder.setImageBitmap(R.id.list_item_image, listItem.getBitmap());
     }
 }

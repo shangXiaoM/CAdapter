@@ -1,5 +1,9 @@
 package com.shangxiaom.commonlist.bean;
 
+import android.graphics.Bitmap;
+
+import java.net.URL;
+
 /**
  * **************************************************
  *
@@ -9,10 +13,11 @@ package com.shangxiaom.commonlist.bean;
  * @ Copyright (c) 2017, RencareHealth All Rights Reserved.
  * **************************************************
  */
-public class MainListItem {
+public class HomeListItem {
     private String mTitle;
     private String mContent;
-    private int mImageId;
+    private Bitmap mBitmap;
+    private URL mURL;
 
     public String getTitle() {
         return mTitle;
@@ -30,11 +35,19 @@ public class MainListItem {
         mContent = content;
     }
 
-    public int getImageId() {
-        return mImageId;
+    public Bitmap getBitmap() {
+        return mBitmap;
     }
 
-    public void setImageId(int imageId) {
-        mImageId = imageId;
+    public void setBitmap(Bitmap bitmap) {
+        mBitmap = bitmap;
+    }
+
+    public URL getURL() {
+        return mURL;
+    }
+
+    public void setURL(URL URL) {
+        mURL = URL;
     }
 }

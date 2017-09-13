@@ -1,4 +1,4 @@
-package com.shangxiaom.commonlist.fragment.mvp.model;
+package com.shangxiaom.commonlist.mvp.fragment.model;
 
 /**
  * **************************************************
@@ -9,5 +9,5 @@ package com.shangxiaom.commonlist.fragment.mvp.model;
  * @ Copyright (c) 2017, RencareHealth All Rights Reserved.
  * **************************************************
  */
-public interface IHomeModel {
+public interface IMainModel {
 }

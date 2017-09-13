@@ -15,12 +15,6 @@ import android.content.Context;
 public class MyApplication extends Application {
     public static MyApplication instance;
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        instance = this;
-    }
-
     /**
      * 获取APPlication的APP
      *
@@ -28,5 +22,11 @@ public class MyApplication extends Application {
      */
     public static Context getContext() {
         return instance.getApplicationContext();
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        instance = this;
     }
 }

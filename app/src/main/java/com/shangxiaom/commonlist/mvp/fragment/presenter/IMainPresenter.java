@@ -1,4 +1,4 @@
-package com.shangxiaom.commonlist.fragment.mvp.presenter;
+package com.shangxiaom.commonlist.mvp.fragment.presenter;
 
 /**
  * **************************************************
@@ -9,5 +9,5 @@ package com.shangxiaom.commonlist.fragment.mvp.presenter;
  * @ Copyright (c) 2017, RencareHealth All Rights Reserved.
  * **************************************************
  */
-public interface IHomePresenter {
+public interface IMainPresenter {
 }

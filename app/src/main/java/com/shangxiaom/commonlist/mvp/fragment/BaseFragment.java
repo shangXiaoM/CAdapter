@@ -1,4 +1,4 @@
-package com.shangxiaom.commonlist.fragment;
+package com.shangxiaom.commonlist.mvp.fragment;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;

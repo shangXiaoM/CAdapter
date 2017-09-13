@@ -2,4 +2,5 @@
     <string name="app_name">CommonList</string>
     <string name="upload_menu_title">上传</string>
     <string name="permission_denied">需要相应的权限</string>
+    <string name="app_finish_keydown">再按一次退出程序</string>
 </resources>

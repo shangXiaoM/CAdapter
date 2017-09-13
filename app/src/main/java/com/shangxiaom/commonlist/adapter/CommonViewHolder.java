@@ -2,6 +2,8 @@ package com.shangxiaom.commonlist.adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -61,10 +63,9 @@ public class CommonViewHolder {
      * @param text
      * @return
      */
-    public CommonViewHolder setText(int viewId, String text) {
+    public void setText(int viewId, String text) {
         TextView view = getView(viewId);
         view.setText(text);
-        return this;
     }
 
     /**
@@ -74,10 +75,9 @@ public class CommonViewHolder {
      * @param drawableId
      * @return
      */
-    public CommonViewHolder setImageResource(int viewId, int drawableId) {
+    public void setImageResource(int viewId, int drawableId) {
         ImageView view = getView(viewId);
         view.setImageResource(drawableId);
-        return this;
     }
 
     /**
@@ -87,10 +87,9 @@ public class CommonViewHolder {
      * @param drawableId
      * @return
      */
-    public CommonViewHolder setBackgroundRes(int viewId, int drawableId) {
+    public void setBackgroundRes(int viewId, int drawableId) {
         ImageView view = getView(viewId);
         view.setBackgroundResource(drawableId);
-        return this;
     }
 
     /**
@@ -100,10 +99,14 @@ public class CommonViewHolder {
      * @param bm
      * @return
      */
-    public CommonViewHolder setImageBitmap(int viewId, Bitmap bm) {
+    public void setImageBitmap(int viewId, Bitmap bm) {
+        Drawable drawable = new BitmapDrawable(bm);
+        setImageBackground(viewId, drawable);
+    }
+
+    public void setImageBackground(int viewId, Drawable drawable) {
         ImageView view = getView(viewId);
-        view.setImageBitmap(bm);
-        return this;
+        view.setBackground(drawable);
     }
 
     public View getConvertView() {

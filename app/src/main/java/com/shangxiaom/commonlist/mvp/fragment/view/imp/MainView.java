@@ -1,4 +1,4 @@
-package com.shangxiaom.commonlist.fragment.mvp.view.imp;
+package com.shangxiaom.commonlist.mvp.fragment.view.imp;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -8,11 +8,11 @@ import android.view.View;
 import android.widget.ListView;
 
 import com.shangxiaom.commonlist.R;
-import com.shangxiaom.commonlist.adapter.MainAdapter;
-import com.shangxiaom.commonlist.bean.MainListItem;
-import com.shangxiaom.commonlist.fragment.IBaseView;
-import com.shangxiaom.commonlist.fragment.mvp.presenter.IHomePresenter;
-import com.shangxiaom.commonlist.fragment.mvp.view.IHomeView;
+import com.shangxiaom.commonlist.adapter.HomeListAdapter;
+import com.shangxiaom.commonlist.bean.HomeListItem;
+import com.shangxiaom.commonlist.mvp.fragment.IBaseView;
+import com.shangxiaom.commonlist.mvp.fragment.presenter.IMainPresenter;
+import com.shangxiaom.commonlist.mvp.fragment.view.IMainView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,22 +20,22 @@ import java.util.List;
 /**
  * **************************************************
  *
- * @ 项目名称:com.shangxiaom.commonlist.fragment.mvp.view.imp
+ * @ 项目名称:com.shangxiaom.commonlist.mvp.fragment.view.imp
  * @ 日        期:2017/9/12 14:16
  * @ 作        者:Administrator
  * @ Copyright (c) 2017, RencareHealth All Rights Reserved.
  * **************************************************
  */
-public class HomeView implements IBaseView, IHomeView {
+public class MainView implements IBaseView, IMainView {
     private Context mContext;
-    private IHomePresenter mIHomePresenter;
-    private MainAdapter<MainListItem> mListItemMainAdapter;
+    private IMainPresenter mIMainPresenter;
+    private HomeListAdapter<HomeListItem> mListItemHomeListAdapter;
 
     private View mRootView;
     private ListView mListView;
 
     private Toolbar mToolbar;
-    private List<MainListItem> mListData = new ArrayList<>();
+    private List<HomeListItem> mListData = new ArrayList<>();
 
     /**
      * 是否显示进度
@@ -89,7 +89,7 @@ public class HomeView implements IBaseView, IHomeView {
     public void bindView(View view) {
         this.mRootView = view;
         this.mContext = view.getContext();
-        mListItemMainAdapter = new MainAdapter<>(LayoutInflater.from(this.mContext), mListData, this.mContext, R.layout.list_item_main);
+        mListItemHomeListAdapter = new HomeListAdapter<>(LayoutInflater.from(this.mContext), mListData, this.mContext, R.layout.list_item_main);
     }
 
     @Override
