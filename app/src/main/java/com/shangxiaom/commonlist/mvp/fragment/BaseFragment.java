@@ -20,12 +20,12 @@ import android.view.ViewGroup;
 @SuppressLint("ValidFragment")
 public class BaseFragment extends Fragment {
 
-    IBaseView mIBaseView;
+    IBaseFragmentView mIBaseFragmentView;
 
-    public BaseFragment(IBaseView iBaseView) {
-        this.mIBaseView = iBaseView;
-        if (null != iBaseView) {
-            Bundle bundle = iBaseView.getBundle();
+    public BaseFragment(IBaseFragmentView iBaseFragmentView) {
+        this.mIBaseFragmentView = iBaseFragmentView;
+        if (null != iBaseFragmentView) {
+            Bundle bundle = iBaseFragmentView.getBundle();
             if (null != bundle) {
                 setArguments(bundle);
             }
@@ -38,10 +38,10 @@ public class BaseFragment extends Fragment {
         setHasOptionsMenu(true);
         Bundle bundle = getArguments();
         if (null != bundle) {
-            int layoutId = bundle.getInt(IBaseView.LAYOUT_ID);
+            int layoutId = bundle.getInt(IBaseFragmentView.LAYOUT_ID);
             View view = inflater.inflate(layoutId, container);
-            if (null != this.mIBaseView) {
-                this.mIBaseView.bindView(view);
+            if (null != this.mIBaseFragmentView) {
+                this.mIBaseFragmentView.bindView(view);
             }
             return view;
         }
@@ -50,8 +50,8 @@ public class BaseFragment extends Fragment {
 
     @Override
     public void onHiddenChanged(boolean hidden) {
-        if (null != mIBaseView) {
-            mIBaseView.onHiddenChanged(hidden);
+        if (null != mIBaseFragmentView) {
+            mIBaseFragmentView.onHiddenChanged(hidden);
         }
         super.onHiddenChanged(hidden);
     }

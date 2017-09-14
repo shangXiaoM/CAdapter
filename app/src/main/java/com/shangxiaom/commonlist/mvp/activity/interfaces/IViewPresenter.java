@@ -12,17 +12,17 @@ import android.content.Context;
  * **************************************************
  */
 public abstract class IViewPresenter<T extends IViewHandler> {
-    public T mView; //这个是要回调的接口的对象
+    public T mViewHandler; //这个是要回调的接口的对象
     public Context mContext;
     protected String token = "token";
 
     public void attach(T mView) {
-        this.mView = mView;
+        this.mViewHandler = mView;
     }
 
     public void detachView() {
-        if (mView != null) {
-            mView = null;
+        if (mViewHandler != null) {
+            mViewHandler = null;
         }
     }
 }

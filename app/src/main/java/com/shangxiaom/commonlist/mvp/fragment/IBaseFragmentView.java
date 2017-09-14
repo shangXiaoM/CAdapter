@@ -12,7 +12,7 @@ import android.view.View;
  * @ Copyright (c) 2017, RencareHealth All Rights Reserved.
  * **************************************************
  */
-public interface IBaseView {
+public interface IBaseFragmentView {
     String LAYOUT_ID = "layout_id";
 
     Bundle getBundle();

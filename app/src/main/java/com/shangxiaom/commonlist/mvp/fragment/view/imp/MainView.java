@@ -10,7 +10,7 @@ import android.widget.ListView;
 import com.shangxiaom.commonlist.R;
 import com.shangxiaom.commonlist.adapter.HomeListAdapter;
 import com.shangxiaom.commonlist.bean.HomeListItem;
-import com.shangxiaom.commonlist.mvp.fragment.IBaseView;
+import com.shangxiaom.commonlist.mvp.fragment.IBaseFragmentView;
 import com.shangxiaom.commonlist.mvp.fragment.presenter.IMainPresenter;
 import com.shangxiaom.commonlist.mvp.fragment.view.IMainView;
 
@@ -26,7 +26,7 @@ import java.util.List;
  * @ Copyright (c) 2017, RencareHealth All Rights Reserved.
  * **************************************************
  */
-public class MainView implements IBaseView, IMainView {
+public class MainView implements IBaseFragmentView, IMainView {
     private Context mContext;
     private IMainPresenter mIMainPresenter;
     private HomeListAdapter<HomeListItem> mListItemHomeListAdapter;
@@ -76,7 +76,7 @@ public class MainView implements IBaseView, IMainView {
     @Override
     public Bundle getBundle() {
         Bundle bundle = new Bundle();
-        bundle.putInt(IBaseView.LAYOUT_ID, R.layout.home_view);
+        bundle.putInt(IBaseFragmentView.LAYOUT_ID, R.layout.home_view);
         return bundle;
     }
 

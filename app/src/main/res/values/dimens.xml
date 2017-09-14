@@ -1,0 +1,4 @@
+<resources>
+    <dimen name="line_progress_corner">2dp</dimen>
+    <dimen name="line_progress_height">3dp</dimen>
+</resources>

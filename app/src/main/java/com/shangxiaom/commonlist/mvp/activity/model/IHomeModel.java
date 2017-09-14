@@ -1,6 +1,8 @@
 package com.shangxiaom.commonlist.mvp.activity.model;
 
-import com.shangxiaom.commonlist.mvp.IResultCallBack;
+import android.net.Uri;
+
+import java.util.List;
 
 /**
  * **************************************************
@@ -12,5 +14,5 @@ import com.shangxiaom.commonlist.mvp.IResultCallBack;
  * **************************************************
  */
 public interface IHomeModel {
-    void login(IResultCallBack resultCallBack);
+    void upload(List<Uri> images);
 }

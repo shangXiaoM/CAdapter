@@ -26,14 +26,17 @@ import io.reactivex.functions.Consumer;
  * **************************************************
  */
 public abstract class IBaseActivity<K extends IViewHandler, T extends IViewPresenter<K>> extends AppCompatActivity implements IBaseActivityView<K, T>, IViewHandler {
-    public T mPresenter;
     /**
-     * 根文件
+     * 根视图
      */
     protected View mRootView;
     protected Context mContext;
 
+    /**
+     * 动态权限申请
+     */
     protected RxPermissions mRxPermissions;
+    public T mPresenter;
 
     @Override
     protected void onCreate(@Nullable final Bundle savedInstanceState) {
