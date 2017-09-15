@@ -5,4 +5,5 @@
     <string name="app_finish_keydown">再按一次退出程序</string>
     <string name="images_upload_success">图片上传成功</string>
     <string name="images_upload_fail">图片上传失败</string>
+    <string name="please_wait">请稍候...</string>
 </resources>

@@ -23,7 +23,9 @@ import java.io.IOException;
  */
 public class FileUtil {
 
-    private static final String CACHE_DIR = "cache";
+    private static final String IMAGE_CACHE_DIR = "imageCache";
+    private static final String HTTP_CACHE_DIR = "httpCache";
+
     private static String rootPath = null;
 
     /**
@@ -38,9 +40,16 @@ public class FileUtil {
         return path;
     }
 
+    public static String getHttpCacheDir() {
+        if (StringUtil.isEmpty(rootPath)) {
+            rootPath = getSDAppCachePath() + File.separator + HTTP_CACHE_DIR;
+        }
+        return rootPath;
+    }
+
     public static String getImagesCacheDir() {
         if (StringUtil.isEmpty(rootPath)) {
-            rootPath = getSDAppCachePath() + File.separator + CACHE_DIR;
+            rootPath = getSDAppCachePath() + File.separator + IMAGE_CACHE_DIR;
         }
         return rootPath;
     }

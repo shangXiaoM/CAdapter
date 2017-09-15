@@ -11,16 +11,9 @@ import com.shangxiaom.commonlist.mvp.activity.view.IHomeActivityView;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.reactivex.Flowable;
 import io.reactivex.Observable;
-import io.reactivex.ObservableSource;
-import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.annotations.NonNull;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
-import io.reactivex.functions.Function;
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * **************************************************
@@ -35,7 +28,6 @@ public class HomePresenter extends IViewPresenter<IHomeActivityView> {
     private IHomeModel mHomeModel;
 
     private List<Uri> mUploadErrorImages;
-    private int mTestProgress;
 
     public HomePresenter() {
         mHomeModel = new HomeModel(this);
@@ -43,57 +35,9 @@ public class HomePresenter extends IViewPresenter<IHomeActivityView> {
     }
 
     public void upload(List<Uri> images) {
-        uploadProgressShow(images.size());
+        ingShow(R.string.please_wait);
         mUploadErrorImages.clear();
-        mTestProgress = 0;
-        Observable.just(images)
-                .subscribeOn(Schedulers.io())
-                .flatMap(new Function<List<Uri>, ObservableSource<Uri>>() {
-                    @Override
-                    public ObservableSource<Uri> apply(@NonNull List<Uri> uris) throws Exception {
-                        return Observable.fromIterable(uris);
-                    }
-                })
-                .map(new Function<Uri, Uri>() {
-                    @Override
-                    public Uri apply(@NonNull Uri uri) throws Exception {
-                        if (!mHomeModel.upload(uri)) {
-                            mUploadErrorImages.add(uri);
-                        }
-                        return uri;
-                    }
-                })
-                .subscribe(new Observer<Uri>() {
-                    @Override
-                    public void onSubscribe(@NonNull Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(@NonNull Uri uri) {
-                        mTestProgress++;
-                        onProgressUpdate(mTestProgress);
-                    }
-
-                    @Override
-                    public void onError(@NonNull Throwable e) {
-                        e.printStackTrace();
-                        if (0 == mUploadErrorImages.size()) {
-                            uploadSuccess();
-                        } else {
-                            uploadFail(mUploadErrorImages);
-                        }
-                    }
-
-                    @Override
-                    public void onComplete() {
-                        if (0 == mUploadErrorImages.size()) {
-                            uploadSuccess();
-                        } else {
-                            uploadFail(mUploadErrorImages);
-                        }
-                    }
-                });
+        mHomeModel.upload(images);
     }
 
     public void uploadProgressShow(int max) {
@@ -101,7 +45,7 @@ public class HomePresenter extends IViewPresenter<IHomeActivityView> {
     }
 
     public void onProgressUpdate(int progress) {
-        Flowable.just(progress)
+        Observable.just(progress)
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<Integer>() {
                     @Override
@@ -112,7 +56,7 @@ public class HomePresenter extends IViewPresenter<IHomeActivityView> {
     }
 
     public void uploadSuccess() {
-        Flowable.just("")
+        Observable.just("")
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<String>() {
                     @Override
@@ -126,7 +70,7 @@ public class HomePresenter extends IViewPresenter<IHomeActivityView> {
     }
 
     public void uploadFail(List<Uri> images) {
-        Flowable.just(images)
+        Observable.just(images)
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<List<Uri>>() {
                     @Override
@@ -134,6 +78,21 @@ public class HomePresenter extends IViewPresenter<IHomeActivityView> {
                         mViewHandler.toastShow(R.string.images_upload_fail);
                         mViewHandler.uploadFail(images);
                         mViewHandler.uploadProgressDismiss();
+                    }
+                });
+    }
+
+    public void ingShow(int resId) {
+        mViewHandler.ingShow(resId);
+    }
+
+    public void ingDismiss() {
+        Observable.just("")
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<String>() {
+                    @Override
+                    public void accept(String string) throws Exception {
+                        mViewHandler.ingDismiss();
                     }
                 });
     }

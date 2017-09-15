@@ -14,5 +14,5 @@ import java.util.List;
  * **************************************************
  */
 public interface IHomeModel {
-    boolean upload(Uri images);
+    void upload(List<Uri> images);
 }
