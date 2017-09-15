@@ -26,56 +26,16 @@ import io.reactivex.schedulers.Schedulers;
  * **************************************************
  */
 public class HomeModel implements IHomeModel {
-    private int count;
     private HomePresenter mHomePresenter;
-
-    public HomeModel() {
-    }
 
     public HomeModel(HomePresenter homePresenter) {
         this.mHomePresenter = homePresenter;
     }
 
     @Override
-    public void upload(final List<Uri> images) {
-        count = 0;
-        Observable.just(images)
-                .subscribeOn(Schedulers.io())
-                .flatMap(new Function<List<Uri>, Observable<Uri>>() {
-                    @Override
-                    public Observable<Uri> apply(List<Uri> uris) throws Exception {
-                        return Observable.fromIterable(uris);
-                    }
-                })
-                .doOnNext(new Consumer<Uri>() {
-                    @Override
-                    public void accept(Uri uri) throws Exception {
-                        SystemClock.sleep(1000);
-                        count++;
-                    }
-                })
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<Uri>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(Uri uri) {
-                        float temp = 100 * count / images.size();
-                        mHomePresenter.onProgressUpdate((int) temp);
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        mHomePresenter.uploadFail(null);
-                    }
-
-                    @Override
-                    public void onComplete() {
-                        mHomePresenter.uploadSuccess();
-                    }
-                });
+    public boolean upload(final Uri image) {
+        SystemClock.sleep(1000);
+        // TODO 上传进度单独使用presenter
+        return true;
     }
 }
