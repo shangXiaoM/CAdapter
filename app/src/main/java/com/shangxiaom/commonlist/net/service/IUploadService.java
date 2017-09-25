@@ -1,12 +1,10 @@
-package com.shangxiaom.commonlist.net;
+package com.shangxiaom.commonlist.net.service;
 
 import java.util.Map;
 
 import io.reactivex.Flowable;
-import io.reactivex.Observable;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
-import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
@@ -21,11 +19,7 @@ import retrofit2.http.PartMap;
  * @ Copyright (c) 2017, RencareHealth All Rights Reserved.
  * **************************************************
  */
-public interface INetRequestService {
-    // get请求，参数为basil2style
-    @GET("basil2style")
-    Observable<ResponseBody> getTestStr();     //返回的方法，返回的响应体使用了ResponseBody
-
+public interface IUploadService {
     @Multipart
     @POST("上传的相对路径/使用@path实现")
     Flowable<ResponseBody> uploadImage(

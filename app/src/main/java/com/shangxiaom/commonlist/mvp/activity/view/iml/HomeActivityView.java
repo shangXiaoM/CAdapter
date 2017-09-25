@@ -21,6 +21,7 @@ import com.shangxiaom.commonlist.bean.HomeListItem;
 import com.shangxiaom.commonlist.mvp.activity.interfaces.IBaseActivity;
 import com.shangxiaom.commonlist.mvp.activity.presenter.HomePresenter;
 import com.shangxiaom.commonlist.mvp.activity.view.IHomeActivityView;
+import com.shangxiaom.commonlist.services.TestAIDLService;
 import com.shangxiaom.commonlist.utils.ProgressUtil;
 import com.shangxiaom.commonlist.utils.ToastUtil;
 import com.zhihu.matisse.Matisse;
@@ -182,6 +183,9 @@ public class HomeActivityView extends IBaseActivity<IHomeActivityView, HomePrese
                 mSmartRefreshLayout.finishRefresh(2000);
             }
         });
+
+        Intent startIntent = new Intent(this, TestAIDLService.class);
+        startService(startIntent);
     }
 
     @Override

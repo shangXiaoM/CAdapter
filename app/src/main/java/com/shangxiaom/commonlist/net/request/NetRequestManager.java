@@ -1,8 +1,8 @@
 package com.shangxiaom.commonlist.net.request;
 
-import com.shangxiaom.commonlist.net.INetRequestService;
-import com.shangxiaom.commonlist.utils.ConstantUtil;
+import com.shangxiaom.commonlist.net.service.IUploadService;
 import com.shangxiaom.commonlist.utils.FileUtil;
+import com.shangxiaom.commonlist.utils.HttpManagerUtil;
 
 import java.io.File;
 import java.io.IOException;
@@ -33,7 +33,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
  */
 public class NetRequestManager {
     private static NetRequestManager mInstance;
-    private INetRequestService mNetRequestService;
+    private IUploadService mNetRequestService;
 
     public static NetRequestManager getInstance() {
         if (null == mInstance) {
@@ -50,9 +50,9 @@ public class NetRequestManager {
                 // 如果网络访问返回的是json字符串，使用gson转换器
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .baseUrl(ConstantUtil.URL_BASE)
+                .baseUrl(HttpManagerUtil.URL_BASE)
                 .build();
-        mNetRequestService = retrofit.create(INetRequestService.class);
+        mNetRequestService = retrofit.create(IUploadService.class);
     }
 
     /**
@@ -64,11 +64,11 @@ public class NetRequestManager {
         //新建一个文件用来缓存网络请求
         File cacheFile = new File(FileUtil.getHttpCacheDir());
         OkHttpClient.Builder builder = new OkHttpClient().newBuilder();
-        builder.connectTimeout(ConstantUtil.NET_CONNECT_TIMEOUT, TimeUnit.SECONDS);
+        builder.connectTimeout(HttpManagerUtil.NET_CONNECT_TIMEOUT, TimeUnit.SECONDS);
         //设置从主机读信息超时
-        builder.readTimeout(ConstantUtil.NET_READ_WRITE_TIMEOUT, TimeUnit.SECONDS);
+        builder.readTimeout(HttpManagerUtil.NET_READ_WRITE_TIMEOUT, TimeUnit.SECONDS);
         //设置写信息超时
-        builder.writeTimeout(ConstantUtil.NET_READ_WRITE_TIMEOUT, TimeUnit.SECONDS);
+        builder.writeTimeout(HttpManagerUtil.NET_READ_WRITE_TIMEOUT, TimeUnit.SECONDS);
         //设置缓存文件
         builder.cache(new Cache(cacheFile, 10 * 1024 * 1024));
         //设置okhttp拦截器，为每一个retrofit2的网络请求都增加相同的head头信息，而不用每一个请求都写头信息
