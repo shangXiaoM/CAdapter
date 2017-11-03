@@ -9,4 +9,13 @@
         <item name="android:textColorPrimary">@color/colorWhite</item>
     </style>
 
+    <!--设置toolbar的menu菜单弹出位置以及背景色-->
+    <style name="ToolbarPopupTheme" parent="@style/ThemeOverlay.AppCompat.Dark">
+        <item name="android:colorBackground">@color/colorBlack</item>
+        <item name="actionOverflowMenuStyle">@style/OverflowMenuStyle</item>
+    </style>
+    <style name="OverflowMenuStyle" parent="Widget.AppCompat.Light.PopupMenu.Overflow">
+        <item name="overlapAnchor">false</item>  <!--设置不覆盖锚点-->
+    </style>
+
 </resources>

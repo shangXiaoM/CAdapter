@@ -150,6 +150,25 @@ public class HomeActivityView extends IBaseActivity<IHomeActivityView, HomePrese
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.upload_menu_main:
+                Matisse.from(HomeActivityView.this)
+                        .choose(MimeType.of(MimeType.JPEG, MimeType.PNG))
+                        .theme(R.style.Matisse_Zhihu)
+                        .countable(false)
+                        .maxSelectable(10)
+                        .imageEngine(new GlideEngine())
+                        .forResult(IMAGE_TO_UPLOAD);
+                break;
+            case R.id.socket_menu_main:
+
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public void bindView(Bundle savedInstanceState) {
         mToolbar = fvb(R.id.toolbar_home_include);
         mListView = fvb(R.id.listview_home);
@@ -164,19 +183,6 @@ public class HomeActivityView extends IBaseActivity<IHomeActivityView, HomePrese
     private void initListener() {
         mHomeListAdapter = new HomeListAdapter<>(this.getLayoutInflater(), mListData, this, R.layout.list_item_main);
         mListView.setAdapter(mHomeListAdapter);
-        mToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                Matisse.from(HomeActivityView.this)
-                        .choose(MimeType.of(MimeType.JPEG, MimeType.PNG))
-                        .theme(R.style.Matisse_Zhihu)
-                        .countable(false)
-                        .maxSelectable(10)
-                        .imageEngine(new GlideEngine())
-                        .forResult(IMAGE_TO_UPLOAD);
-                return false;
-            }
-        });
         mSmartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {

@@ -6,4 +6,5 @@
     <string name="images_upload_success">图片上传成功</string>
     <string name="images_upload_fail">图片上传失败</string>
     <string name="please_wait">请稍候...</string>
+    <string name="socket_menu_title">Socket连接</string>
 </resources>

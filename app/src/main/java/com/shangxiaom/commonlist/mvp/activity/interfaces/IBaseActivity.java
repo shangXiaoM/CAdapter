@@ -43,7 +43,7 @@ public abstract class IBaseActivity<K extends IViewHandler, T extends IViewPrese
         super.onCreate(savedInstanceState);
         mContext = this;
         mRxPermissions = new RxPermissions(this);
-        mRxPermissions.request(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        mRxPermissions.request(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.INTERNET)
                 .subscribe(new Consumer<Boolean>() {
                     @Override
                     public void accept(Boolean aBoolean) throws Exception {

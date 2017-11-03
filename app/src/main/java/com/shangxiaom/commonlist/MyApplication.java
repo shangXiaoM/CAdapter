@@ -3,6 +3,8 @@ package com.shangxiaom.commonlist;
 import android.app.Application;
 import android.content.Context;
 
+import com.shangxiaom.commonlist.log.CrashHandler;
+
 /**
  * **************************************************
  *
@@ -27,6 +29,7 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        CrashHandler.getInstance().init(this);
         instance = this;
     }
 }

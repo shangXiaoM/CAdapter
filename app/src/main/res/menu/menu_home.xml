@@ -2,9 +2,24 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/upload_menu_main"
-        android:icon="@mipmap/ic_apple_keyboard_caps_white_24dp"
-        android:title="@string/upload_menu_title"
-        app:showAsAction="always"
-        />
+        android:id="@+id/settings"
+        android:icon="@drawable/ic_menu_navigation"
+        android:title=""
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/upload_menu_main"
+                android:icon="@drawable/ic_apple_keyboard_caps_white_24dp"
+                android:title="@string/upload_menu_title"
+                app:showAsAction="never"
+                />
+            <item
+                android:id="@+id/socket_menu_main"
+                android:icon="@drawable/ic_access_point_white_24dp"
+                android:title="@string/socket_menu_title"
+                app:showAsAction="never"
+                />
+        </menu>
+
+    </item>
 </menu>
