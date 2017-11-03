@@ -1,5 +1,8 @@
 package com.shangxiaom.commonlist.net.socket;
 
+import com.shangxiaom.commonlist.mvp.activity.interfaces.IViewPresenter;
+import com.shangxiaom.commonlist.mvp.activity.presenter.SocketPresenter;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -24,7 +27,6 @@ public class SocketConnection {
     private Socket mSocket;
     // 输入流
     private InputStream is;
-    private InputStreamReader isr;
     // 输出流
     private OutputStream os;
 
@@ -36,10 +38,13 @@ public class SocketConnection {
 
     private BlockingQueue<byte[]> mData = new LinkedBlockingQueue<>();
 
-    public static SocketConnection getInstance() {
+    private static SocketPresenter mSocketPresenter;
+
+    public static SocketConnection getInstance(SocketPresenter socketPresenter) {
         if (null == mInstance) {
             mInstance = new SocketConnection();
         }
+        mSocketPresenter = socketPresenter;
         return mInstance;
     }
 
@@ -56,6 +61,10 @@ public class SocketConnection {
             mThreadPool.execute(sendRunnable);
             mThreadPool.execute(receiveRunnable);
         }
+        return isConnected;
+    }
+
+    public boolean isConnected() {
         return isConnected;
     }
 
@@ -81,7 +90,6 @@ public class SocketConnection {
         // 关闭整个Socket连接
         if (null != mSocket) {
             mSocket.close();
-            mSocket = null;
         }
         return mSocket.isConnected();
     }
@@ -103,13 +111,15 @@ public class SocketConnection {
         }
     };
 
-    byte[] read = new byte[100];
+    byte[] read = new byte[10];
     private Runnable receiveRunnable = new Runnable() {
         @Override
         public void run() {
             while (isConnected && null != is) {
                 try {
-                    is.read(read);
+                    if (is.read(read) > 0) {
+                        mSocketPresenter.receive(read);
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

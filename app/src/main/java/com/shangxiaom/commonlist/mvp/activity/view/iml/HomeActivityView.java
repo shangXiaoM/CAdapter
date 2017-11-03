@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -162,7 +163,10 @@ public class HomeActivityView extends IBaseActivity<IHomeActivityView, HomePrese
                         .forResult(IMAGE_TO_UPLOAD);
                 break;
             case R.id.socket_menu_main:
-
+                Intent intent = new Intent();
+                intent.setClass(HomeActivityView.this, SocketActivityView.class);
+                startActivity(intent);
+                HomeActivityView.this.finish();
                 break;
         }
         return super.onOptionsItemSelected(item);

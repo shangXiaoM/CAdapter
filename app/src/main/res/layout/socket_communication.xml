@@ -42,7 +42,6 @@
         android:ems="10"
         android:hint="发送的内容，如：Hello"
         android:inputType="textPersonName"
-        android:text="Name"
         android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="@+id/socket_send_btn"
         app:layout_constraintEnd_toStartOf="@+id/socket_send_btn"
@@ -58,5 +57,76 @@
         android:text="发送"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/socket_connect_btn"/>
+
+    <TextView
+        android:id="@+id/socket_display_tv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/textview_back"
+        android:scrollbars="vertical"
+        android:fadeScrollbars="false"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/socket_send_content_ev"/>
+
+    <TextView
+        android:id="@+id/socket_received_msg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/textview_back"
+        android:fadeScrollbars="false"
+        android:scrollbars="vertical"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/socket_display_tv"/>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="接收区"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="@+id/socket_received_msg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/socket_received_msg"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.6"/>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="发送区"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="@+id/socket_display_tv"
+        app:layout_constraintEnd_toEndOf="@+id/socket_display_tv"
+        app:layout_constraintStart_toStartOf="@+id/socket_display_tv"
+        app:layout_constraintTop_toTopOf="@+id/socket_display_tv"/>
 
 </android.support.constraint.ConstraintLayout>

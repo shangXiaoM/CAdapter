@@ -83,6 +83,16 @@ public abstract class IBaseActivity<K extends IViewHandler, T extends IViewPrese
      * @param intent
      */
     protected void getIntentData(Intent intent) {
+        // 避免从桌面启动程序后，会重新实例化入口类的activity
+        if (!this.isTaskRoot()) {
+            if (intent != null) {
+                String action = intent.getAction();
+                if (intent.hasCategory(Intent.CATEGORY_LAUNCHER) && Intent.ACTION_MAIN.equals(action)) { // 从桌面启动的应用
+                    finish();
+                    return;
+                }
+            }
+        }
     }
 
     @Override

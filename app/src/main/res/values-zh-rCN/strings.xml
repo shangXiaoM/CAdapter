@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">CommonList</string>
     <string name="upload_menu_title">上传</string>
     <string name="permission_denied">需要相应的权限</string>
     <string name="app_finish_keydown">再按一次退出程序</string>
@@ -7,4 +8,7 @@
     <string name="images_upload_fail">图片上传失败</string>
     <string name="please_wait">请稍候...</string>
     <string name="socket_menu_title">Socket连接</string>
+    <string name="socket_connected">已连接</string>
+    <string name="socket_not_connect">未连接</string>
+    <string name="socket_dis_connect">已断开连接</string>
 </resources>

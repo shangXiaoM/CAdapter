@@ -22,6 +22,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".mvp.activity.view.iml.SocketActivityView"/>
+
         <service
             android:name=".services.TestAIDLService"
             android:process=":remote">
