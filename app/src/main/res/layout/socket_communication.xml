@@ -39,15 +39,15 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="发送的内容，如：Hello"
         android:inputType="textPersonName"
         android:text="Name"
         android:textColor="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/socket_send_btn"
         app:layout_constraintEnd_toStartOf="@+id/socket_send_btn"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/socket_address_til"/>
+        app:layout_constraintTop_toTopOf="@+id/socket_send_btn"/>
 
     <Button
         android:id="@+id/socket_send_btn"
