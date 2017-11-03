@@ -111,7 +111,7 @@ public class SocketConnection {
         }
     };
 
-    byte[] read = new byte[10];
+    byte[] read = new byte[50];
     private Runnable receiveRunnable = new Runnable() {
         @Override
         public void run() {
