@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -49,6 +48,7 @@ public class HomeActivityView extends IBaseActivity<IHomeActivityView, HomePrese
     private ListView mListView;
     private SmartRefreshLayout mSmartRefreshLayout;
     private ProgressBar mProgressBar;
+    private ProgressBar mCustomProgress;
 
     private List<Uri> mSelectedImages;
     private HomeListAdapter<HomeListItem> mHomeListAdapter;
@@ -178,6 +178,10 @@ public class HomeActivityView extends IBaseActivity<IHomeActivityView, HomePrese
         mListView = fvb(R.id.listview_home);
         mSmartRefreshLayout = fvb(R.id.refresh_layout_home);
         mProgressBar = fvb(R.id.top_upload_progress);
+        mCustomProgress = fvb(R.id.progress_bar);
+        if (mCustomProgress.getVisibility() == View.VISIBLE) {
+            mCustomProgress.setVisibility(View.INVISIBLE);
+        }
         mToolbar.setTitle(getString(R.string.app_name));
         setSupportActionBar(mToolbar);
         initListener();

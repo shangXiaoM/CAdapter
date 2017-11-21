@@ -37,6 +37,7 @@ public class SocketActivityView extends IBaseActivity<ISocketActivityView, Socke
     private TextView mReceivedTV;
     private TextInputLayout mTextInputLayout;
 
+
     private boolean isConnected;
 
     @Override

@@ -1,11 +1,9 @@
 package com.shangxiaom.commonlist.net.socket;
 
-import com.shangxiaom.commonlist.mvp.activity.interfaces.IViewPresenter;
 import com.shangxiaom.commonlist.mvp.activity.presenter.SocketPresenter;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.util.concurrent.BlockingQueue;
@@ -16,10 +14,10 @@ import java.util.concurrent.LinkedBlockingQueue;
 /**
  * **************************************************
  *
- * @ 项目名称:com.rencarehealth.mirhythm.connection
+ * @ 项目名称:com.
  * @ 日        期:2017/10/30 17:31
  * @ 作        者:Administrator
- * @ Copyright (c) 2017, RencareHealth All Rights Reserved.
+ * @ Copyright (c) 2017,  All Rights Reserved.
  * **************************************************
  */
 public class SocketConnection {
