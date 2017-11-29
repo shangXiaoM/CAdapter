@@ -6,8 +6,7 @@ import android.os.IBinder;
 import android.os.RemoteException;
 import android.support.annotation.Nullable;
 
-import com.shangxiaom.commonlist.IMyAidlInterface;
-
+import com.shangxiaom.commonlist.Iaidl;
 
 /**
  * **************************************************
@@ -18,7 +17,11 @@ import com.shangxiaom.commonlist.IMyAidlInterface;
  * @ Copyright (c) 2017, RencareHealth All Rights Reserved.
  * **************************************************
  */
-public class TestAIDLService extends Service {
+public class AIDLService extends Service {
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        return super.onStartCommand(intent, flags, startId);
+    }
 
     @Nullable
     @Override
@@ -26,7 +29,7 @@ public class TestAIDLService extends Service {
         return mBinder;
     }
 
-    IMyAidlInterface.Stub mBinder = new IMyAidlInterface.Stub() {
+    Iaidl.Stub mBinder = new Iaidl.Stub() {
         @Override
         public String getTestStr(String extra) throws RemoteException {
             return "这是测试RPC代码！" + extra;

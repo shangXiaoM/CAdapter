@@ -21,7 +21,7 @@ import com.shangxiaom.commonlist.bean.HomeListItem;
 import com.shangxiaom.commonlist.mvp.activity.interfaces.IBaseActivity;
 import com.shangxiaom.commonlist.mvp.activity.presenter.HomePresenter;
 import com.shangxiaom.commonlist.mvp.activity.view.IHomeActivityView;
-import com.shangxiaom.commonlist.services.TestAIDLService;
+import com.shangxiaom.commonlist.services.AIDLService;
 import com.shangxiaom.commonlist.utils.ProgressUtil;
 import com.shangxiaom.commonlist.utils.ToastUtil;
 import com.zhihu.matisse.Matisse;
@@ -174,7 +174,7 @@ public class HomeActivityView extends IBaseActivity<IHomeActivityView, HomePrese
 
     @Override
     public void bindView(Bundle savedInstanceState) {
-        mToolbar = fvb(R.id.toolbar_home_include);
+        mToolbar = fvb(R.id.toolbar_inside);
         mListView = fvb(R.id.listview_home);
         mSmartRefreshLayout = fvb(R.id.refresh_layout_home);
         mProgressBar = fvb(R.id.top_upload_progress);
@@ -187,7 +187,6 @@ public class HomeActivityView extends IBaseActivity<IHomeActivityView, HomePrese
         initListener();
     }
 
-
     private void initListener() {
         mHomeListAdapter = new HomeListAdapter<>(this.getLayoutInflater(), mListData, this, R.layout.list_item_main);
         mListView.setAdapter(mHomeListAdapter);
@@ -198,7 +197,7 @@ public class HomeActivityView extends IBaseActivity<IHomeActivityView, HomePrese
             }
         });
 
-        Intent startIntent = new Intent(this, TestAIDLService.class);
+        Intent startIntent = new Intent(this, AIDLService.class);
         startService(startIntent);
     }
 

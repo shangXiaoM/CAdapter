@@ -25,10 +25,10 @@
         <activity android:name=".mvp.activity.view.iml.SocketActivityView"/>
 
         <service
-            android:name=".services.TestAIDLService"
+            android:name=".services.AIDLService"
             android:process=":remote">
             <intent-filter>
-                <action android:name="android.intent.action.TestAIDLService"/>
+                <action android:name="android.intent.action.AIDLService"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </service>

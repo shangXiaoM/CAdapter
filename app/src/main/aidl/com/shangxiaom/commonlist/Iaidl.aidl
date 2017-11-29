@@ -3,7 +3,7 @@
 
  // Declare any non-default types here with import statements
 
- interface IMyAidlInterface {
+ interface Iaidl {
      String getTestStr(String extra);
 
      void testAidl();
