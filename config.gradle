@@ -1,0 +1,31 @@
+/*
+ * Copyright (c) 2018 - 1 - 24  9: 52:41
+ * com.ShangXiaoM.github
+ */
+
+ext {
+    android = [
+            compileSdkVersion: 25,
+            buildToolsVersion: '26.0.2',
+            applicationId    : "com.shangxiaom.commonlist",
+            minSdkVersion    : 21,
+            targetSdkVersion : 25,
+            versionCode      : 1,
+            versionName      : "0.0.1"
+    ]
+
+    dependencies = [
+            "support-design"    : "com.android.support:design:25.1.0",
+            "matisse"           : "com.zhihu.android:matisse:0.4.3",
+            "rxandroid2"        : "io.reactivex.rxjava2:rxandroid:2.0.1",
+            "glide"             : "com.github.bumptech.glide:glide:3.7.0",
+            "retrofit2-retrofit": "com.squareup.retrofit2:retrofit:2.3.0",
+            "retrofit2-gson"    : "com.squareup.retrofit2:converter-gson:2.3.0",
+            "retrofit2-scalars" : "com.squareup.retrofit2:converter-scalars:2.3.0",
+            "retrofit2-rxjava2" : "com.squareup.retrofit2:adapter-rxjava2:2.3.0",
+            "constraint-layout" : "com.android.support.constraint:constraint-layout:1.0.2",
+            "SmartRefreshLayout": "com.scwang.smartrefresh:SmartRefreshLayout:1.0.3",
+            "rxpermissions2"    : "com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar",
+            "junit"             : 'junit:junit:4.12'
+    ]
+}

@@ -1,14 +1,17 @@
 apply plugin: 'com.android.application'
 
+def config = rootProject.ext.android
+def libraries = rootProject.ext.dependencies
+
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.1"
+    compileSdkVersion config.compileSdkVersion
+    buildToolsVersion config.buildToolsVersion
     defaultConfig {
-        applicationId "com.shangxiaom.commonlist"
-        minSdkVersion 21
-        targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        applicationId config.applicationId
+        minSdkVersion config.minSdkVersion
+        targetSdkVersion config.targetSdkVersion
+        versionCode config.versionCode
+        versionName config.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -24,20 +27,6 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    testCompile 'junit:junit:4.12'
-
-    compile 'com.zhihu.android:matisse:0.4.3'
-    compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
-    compile 'com.github.bumptech.glide:glide:3.7.0'
-
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
-    // retrofit2，okhttp3，以及rxjava2由以下所有引用默认添加
-    compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar'
-    compile "com.squareup.retrofit2:converter-gson:2.3.0"
-    compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
-    compile "com.squareup.retrofit2:converter-scalars:2.3.0"
-
-    compile 'com.android.support:design:25.0.0'
+    // config.gradle中的dependencies其实是一个HashMap，所以使用groovy语法中的map取键值对，循环compile即可
+    libraries.each { k, v -> compile v } // k-key,v-value
 }
