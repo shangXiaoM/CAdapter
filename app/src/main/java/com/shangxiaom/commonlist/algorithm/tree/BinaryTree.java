@@ -82,15 +82,15 @@ public class BinaryTree {
     }
 
     /**
-     * 中序遍历
+     * 后序遍历
      *
      * @param postNode
      */
     public static void postOrder(TreeNode postNode) {
         if (null != postNode) {
+            postOrder(postNode.getLeft());
             postOrder(postNode.getRight());
             Log.d("postOrder", postNode.getValue() + "");
-            postOrder(postNode.getLeft());
         }
     }
 }
