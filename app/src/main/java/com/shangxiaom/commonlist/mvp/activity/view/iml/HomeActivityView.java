@@ -8,20 +8,21 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.shangxiaom.commonlist.R;
 import com.shangxiaom.commonlist.adapter.HomeListAdapter;
 import com.shangxiaom.commonlist.bean.HomeListItem;
+import com.shangxiaom.commonlist.dialog.ExpandableRecyclerViewDialog;
 import com.shangxiaom.commonlist.mvp.activity.interfaces.IBaseActivity;
 import com.shangxiaom.commonlist.mvp.activity.presenter.HomePresenter;
 import com.shangxiaom.commonlist.mvp.activity.view.IHomeActivityView;
 import com.shangxiaom.commonlist.services.AIDLService;
+import com.shangxiaom.commonlist.utils.ClickUtil;
 import com.shangxiaom.commonlist.utils.ProgressUtil;
 import com.shangxiaom.commonlist.utils.ToastUtil;
 import com.zhihu.matisse.Matisse;
@@ -49,6 +50,7 @@ public class HomeActivityView extends IBaseActivity<IHomeActivityView, HomePrese
     private SmartRefreshLayout mSmartRefreshLayout;
     private ProgressBar mProgressBar;
     private ProgressBar mCustomProgress;
+    private Button mExpandableRecyclerViewBtn;
 
     private List<Uri> mSelectedImages;
     private HomeListAdapter<HomeListItem> mHomeListAdapter;
@@ -179,6 +181,7 @@ public class HomeActivityView extends IBaseActivity<IHomeActivityView, HomePrese
         mSmartRefreshLayout = fvb(R.id.refresh_layout_home);
         mProgressBar = fvb(R.id.top_upload_progress);
         mCustomProgress = fvb(R.id.progress_bar);
+        mExpandableRecyclerViewBtn = fvb(R.id.test_button_expandable_list);
         if (mCustomProgress.getVisibility() == View.VISIBLE) {
             mCustomProgress.setVisibility(View.INVISIBLE);
         }
@@ -190,10 +193,12 @@ public class HomeActivityView extends IBaseActivity<IHomeActivityView, HomePrese
     private void initListener() {
         mHomeListAdapter = new HomeListAdapter<>(this.getLayoutInflater(), mListData, this, R.layout.list_item_main);
         mListView.setAdapter(mHomeListAdapter);
-        mSmartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
-            @Override
-            public void onRefresh(RefreshLayout refreshlayout) {
-                mSmartRefreshLayout.finishRefresh(2000);
+        mSmartRefreshLayout.setOnRefreshListener(refreshlayout -> mSmartRefreshLayout.finishRefresh(2000));
+
+        mExpandableRecyclerViewBtn.setOnClickListener(v -> {
+            if (!ClickUtil.isFastDoubleClick()) {
+                ExpandableRecyclerViewDialog diagnoseTermBankDialog = new ExpandableRecyclerViewDialog(mContext);
+                diagnoseTermBankDialog.show();
             }
         });
 
